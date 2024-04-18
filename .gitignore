@@ -1,0 +1,22 @@
+# Ignore specific files
+.gitattributes
+
+# Ignore files in a specific directory
+logs/
+.git/
+.idea/
+cmake-build-debug/
+
+# Ignore all .tmp files
+*.tmp
+
+# Ignore all files in a specific directory
+temp/*
+
+# Ignore compiled binaries
+*.exe
+*.dll
+
+# Ignore all files in the build directory
+/build/
+*.txt
