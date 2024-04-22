@@ -5,18 +5,25 @@
 #ifndef PLANEDESIGNBYMATH_TREENODE_H
 #define PLANEDESIGNBYMATH_TREENODE_H
 
+#include <vector>
+#include <unordered_map>
 
+#include <vector>
 #include <unordered_map>
 
 class TreeNode {
 public:
-    int val;
-    std::unordered_map<int, TreeNode*> children;
+    explicit TreeNode(int ID);
+    ~TreeNode();
 
-    TreeNode(int v);
     void addChild(TreeNode* child);
     TreeNode* getChild(int v);
-};
+    TreeNode* addNode(const std::vector<int>& path);
+    void destroy();
 
+private:
+    int ID;
+    std::unordered_map<int, TreeNode*> children;
+};
 
 #endif //PLANEDESIGNBYMATH_TREENODE_H

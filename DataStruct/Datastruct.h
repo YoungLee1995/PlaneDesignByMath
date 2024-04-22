@@ -47,13 +47,14 @@ namespace matching {
         int ID;
         EdgeType type;
         int frameID;
+        int steelType;
+        int steelNum;
         vector<double> startPoint; // 起点的三维坐标
         vector<double> endPoint;   // 终点的三维坐标
-        map<string, int> steelTypeQuantity; // 钢材类型及数量
     };
     // 定义板架类
     struct Frame {
-        int frameID; // 板架ID
+        int ID; // 板架ID
         int shipID; // 所属船只ID
         int shipTypeID; // 船只类型
         int tonnage; // 船只吨位
