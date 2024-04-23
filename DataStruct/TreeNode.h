@@ -19,6 +19,7 @@ public:
     void addNode(const std::vector<int>& path);
     void addChild(TreeNode* child);
     void destroy();
+    int getAbsoluteID() const;
 
 private:
     static int counter;

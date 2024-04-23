@@ -76,32 +76,6 @@ namespace matching {
         vector<double> dimensions; // 包含长宽高的三个 double 类型数组
         double displacement; // 排水量
     };
-
-    /* different EdgeOfSingleTon may own FrameOfSingleEdgeNum with same edgeNum, but FrameWithSameEdges'
-     relativeID are different. So all FrameOfSingleEdgeNum belong to different EdgeOfSingleTon shall be saved in a
-     whole map. when a new FrameOfSingleEdgeNum is created, a new relativeID is created.*/
-    struct FrameOfSingleEdgeNum {
-        int ID;
-        int edgeNum;
-        vector<int> frameIDList;    //frame shall be saved in pool, with a map{key:frameID, value:frame*}
-    };
-
-    /* different TonnageOfSingleType may own EdgeOfSingleTon with same edgeNum, but TonnageMaps'
-    relativeID are different. So all EdgeOfSingleTon belong to different EdgeOfSingleTon shall be saved in a
-    whole map. when a new EdgeOfSingleTon is created, a new relativeID is created.*/
-    struct EdgeOfSingleTon {
-        int ID;
-        int tonnage;
-        unordered_map<int, int> edgeNumMap;    //key:edgeNum; value:FrameOfSingleEdgeNum relativeID
-    };
-
-    struct TonnageOfSingleType {
-        int ID;
-        int shipTypeId;
-        unordered_map<int, int> tonnageMap;    //key:Tonnage; value:EdgeOfSingleTon relativeID
-    };
-
-
 }
 
 

@@ -11,9 +11,15 @@ PublicPool &PublicPool::getInstance() {
     return instance;
 }
 
+PublicPool::PublicPool() : frameListRoot(nullptr), searchPathListRoot(nullptr), steelNumArrayListRoot(nullptr) {
+    // 构造函数的其他部分
+}
+
 void PublicPool::readFrame(const struct Frame &frame) {
     const vector<int> searchPath = DataConvert::getSearchPath(frame);
-    const vector<int> steelNumArray = DataConvert::getSteelNumArray(frame);
+    vector<int> steelNumArray = DataConvert::getSteelNumArray(frame);
+    auto listID = TreeNode::search(searchPathListRoot, searchPath)->getAbsoluteID();
+    steelNumArray[0]=listID;
 
     frameList.emplace(frame.ID, frame);
     searchPathList.emplace(frame.ID, searchPath);
@@ -22,16 +28,17 @@ void PublicPool::readFrame(const struct Frame &frame) {
     steelNumArrayListRoot->addNode(steelNumArray);
 }
 
-int PublicPool::searchFrame(const Frame &frame) {
+TreeNode* PublicPool::searchFrame(const Frame &frame) {
     const vector<int> searchPath = DataConvert::getSearchPath(frame);
-    const vector<int> steelNumArray = DataConvert::getSteelNumArray(frame);
+    vector<int> steelNumArray = DataConvert::getSteelNumArray(frame);
+    auto listID = TreeNode::search(searchPathListRoot, searchPath)->getAbsoluteID();
+    steelNumArray[0]=listID;
 
-    //int listID= searchPathListRoot->getChild(searchPath);
-    steelNumArrayListRoot->addNode(steelNumArray);
-    return 0;
+    auto resultNodeMap = TreeNode::search(steelNumArrayListRoot, steelNumArray);
+
+    return resultNodeMap;
 }
 
-PublicPool::PublicPool() = default;
 
 PublicPool::~PublicPool() = default;
 

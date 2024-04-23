@@ -59,3 +59,7 @@ TreeNode* TreeNode::search(TreeNode* root,const std::vector<int>& frameVector) {
     return current;
 }
 
+int TreeNode::getAbsoluteID() const {
+    return absoluteID;
+}
+

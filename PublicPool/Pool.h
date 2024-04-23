@@ -20,14 +20,14 @@ namespace matching {
         PublicPool& operator=(const PublicPool&) = delete;
 
         void readFrame(const struct Frame& frame);
-        int searchFrame(const struct Frame& frame);
+        TreeNode* searchFrame(const struct Frame& frame);
 
     private:
         std::unordered_map<int, Ship&> shipMap; //key:顺序ID
-        std::unordered_map<int, const std::vector<int>&> frameIDMapList;       //key:顺序ID
-        std::unordered_map<int, const std::vector<int>&> steelNumArrayList;       //key:顺序ID
-        std::unordered_map<int, const std::vector<int>&> searchPathList;       //key:顺序ID
-        std::unordered_map<int, const struct Frame&> frameList;           //key:顺序ID
+        std::unordered_map<int, const std::vector<int>> frameIDMapList;       //key:顺序ID
+        std::unordered_map<int, const std::vector<int>> steelNumArrayList;       //key:顺序ID
+        std::unordered_map<int, const std::vector<int>> searchPathList;       //key:顺序ID
+        std::unordered_map<int, const struct Frame> frameList;           //key:顺序ID
         std::mutex mutex_;
         TreeNode* frameListRoot{};
         TreeNode* searchPathListRoot{};
