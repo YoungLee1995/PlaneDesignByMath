@@ -7,22 +7,24 @@
 
 #include <vector>
 #include <unordered_map>
-
-#include <vector>
-#include <unordered_map>
-
+#include <map>
 class TreeNode {
 public:
     explicit TreeNode(int ID);
     ~TreeNode();
 
-    void addChild(TreeNode* child);
+    static TreeNode* getNode(int absoluteID);
+    static TreeNode* search(TreeNode* root,const std::vector<int>& frameVector);
     TreeNode* getChild(int v);
-    TreeNode* addNode(const std::vector<int>& path);
+    void addNode(const std::vector<int>& path);
+    void addChild(TreeNode* child);
     void destroy();
 
 private:
-    int ID;
+    static int counter;
+    static std::map<int,TreeNode*> nodeMap;
+    int absoluteID;
+    int relativeID;
     std::unordered_map<int, TreeNode*> children;
 };
 

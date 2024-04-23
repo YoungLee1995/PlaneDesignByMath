@@ -78,8 +78,8 @@ namespace matching {
     };
 
     /* different EdgeOfSingleTon may own FrameOfSingleEdgeNum with same edgeNum, but FrameWithSameEdges'
-     ID are different. So all FrameOfSingleEdgeNum belong to different EdgeOfSingleTon shall be saved in a
-     whole map. when a new FrameOfSingleEdgeNum is created, a new ID is created.*/
+     relativeID are different. So all FrameOfSingleEdgeNum belong to different EdgeOfSingleTon shall be saved in a
+     whole map. when a new FrameOfSingleEdgeNum is created, a new relativeID is created.*/
     struct FrameOfSingleEdgeNum {
         int ID;
         int edgeNum;
@@ -87,18 +87,18 @@ namespace matching {
     };
 
     /* different TonnageOfSingleType may own EdgeOfSingleTon with same edgeNum, but TonnageMaps'
-    ID are different. So all EdgeOfSingleTon belong to different EdgeOfSingleTon shall be saved in a
-    whole map. when a new EdgeOfSingleTon is created, a new ID is created.*/
+    relativeID are different. So all EdgeOfSingleTon belong to different EdgeOfSingleTon shall be saved in a
+    whole map. when a new EdgeOfSingleTon is created, a new relativeID is created.*/
     struct EdgeOfSingleTon {
         int ID;
         int tonnage;
-        unordered_map<int, int> edgeNumMap;    //key:edgeNum; value:FrameOfSingleEdgeNum ID
+        unordered_map<int, int> edgeNumMap;    //key:edgeNum; value:FrameOfSingleEdgeNum relativeID
     };
 
     struct TonnageOfSingleType {
         int ID;
         int shipTypeId;
-        unordered_map<int, int> tonnageMap;    //key:Tonnage; value:EdgeOfSingleTon ID
+        unordered_map<int, int> tonnageMap;    //key:Tonnage; value:EdgeOfSingleTon relativeID
     };
 
 

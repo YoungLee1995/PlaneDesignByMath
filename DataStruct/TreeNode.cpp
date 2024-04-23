@@ -3,14 +3,18 @@
 //
 #include "TreeNode.h"
 
-TreeNode::TreeNode(int v) : ID(v) {}
+TreeNode::TreeNode(int v) : relativeID(v) {
+    counter++;
+    absoluteID=counter;
+    nodeMap.emplace(absoluteID,this);
+}
 
 TreeNode::~TreeNode() {
     destroy();
 }
 
 void TreeNode::addChild(TreeNode* child) {
-    children[child->ID] = child;
+    children[child->relativeID] = child;
 }
 
 TreeNode* TreeNode::getChild(int v) {
@@ -21,7 +25,7 @@ TreeNode* TreeNode::getChild(int v) {
     return nullptr;
 }
 
-TreeNode* TreeNode::addNode(const std::vector<int>& path) {
+void TreeNode::addNode(const std::vector<int>& path) {
     TreeNode* current = this;
     for (int i : path) {
         TreeNode* child = current->getChild(i);
@@ -31,7 +35,6 @@ TreeNode* TreeNode::addNode(const std::vector<int>& path) {
         }
         current = child;
     }
-    return current;
 }
 
 void TreeNode::destroy() {
@@ -39,5 +42,20 @@ void TreeNode::destroy() {
         delete pair.second;
     }
     children.clear();
+}
+
+TreeNode *TreeNode::getNode(int absoluteID) {
+    return nodeMap[absoluteID];
+}
+
+TreeNode* TreeNode::search(TreeNode* root,const std::vector<int>& frameVector) {
+    TreeNode* current = root;
+    for (int i : frameVector) {
+        current = current->getChild(i);
+        if (current == nullptr) {
+            return nullptr; // Node not found
+        }
+    }
+    return current;
 }
 

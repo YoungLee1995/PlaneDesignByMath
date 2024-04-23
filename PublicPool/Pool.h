@@ -4,7 +4,10 @@
 #include <unordered_map>
 #include <mutex>
 #include <stdexcept>
+#include <memory>
 #include "../DataStruct/Datastruct.h"
+#include "../DataStruct/DataConvert.h"
+#include "../DataStruct/TreeNode.h"
 
 namespace matching {
 
@@ -16,13 +19,19 @@ namespace matching {
         PublicPool(const PublicPool&) = delete;
         PublicPool& operator=(const PublicPool&) = delete;
 
-        static void readFrame(const struct Frame& frame);
+        void readFrame(const struct Frame& frame);
+        int searchFrame(const struct Frame& frame);
 
     private:
-        mutable std::unordered_map<int, Ship&> shipMap; //key:顺序ID
-        mutable std::unordered_map<int, FrameOfSingleEdgeNum&> frameMapList;       //key:顺序ID
-        mutable std::unordered_map<int, Frame&> frameList;           //key:顺序ID
-        mutable std::mutex mutex_;
+        std::unordered_map<int, Ship&> shipMap; //key:顺序ID
+        std::unordered_map<int, const std::vector<int>&> frameIDMapList;       //key:顺序ID
+        std::unordered_map<int, const std::vector<int>&> steelNumArrayList;       //key:顺序ID
+        std::unordered_map<int, const std::vector<int>&> searchPathList;       //key:顺序ID
+        std::unordered_map<int, const struct Frame&> frameList;           //key:顺序ID
+        std::mutex mutex_;
+        TreeNode* frameListRoot{};
+        TreeNode* searchPathListRoot{};
+        TreeNode* steelNumArrayListRoot{};
     };
 
 
