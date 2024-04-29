@@ -1,6 +1,10 @@
 #include <iostream>
+#include "Interaction/MainWindow.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    MainWindow mainWindow={};
+    mainWindow.main();
+
+
     return 0;
 }

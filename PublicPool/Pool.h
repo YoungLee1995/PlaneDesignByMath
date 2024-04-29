@@ -24,14 +24,14 @@ namespace matching {
 
     private:
         std::unordered_map<int, Ship&> shipMap; //key:顺序ID
-        std::unordered_map<int, const std::vector<int>> frameIDMapList;       //key:顺序ID
-        std::unordered_map<int, const std::vector<int>> steelNumArrayList;       //key:顺序ID
-        std::unordered_map<int, const std::vector<int>> searchPathList;       //key:顺序ID
-        std::unordered_map<int, const struct Frame> frameList;           //key:顺序ID
+        std::unordered_map<int, const std::vector<int>&> frameIDMapList;       //key:顺序ID
+        std::unordered_map<int, const std::vector<int>&> steelNumArrayList;       //key:顺序ID
+        std::unordered_map<int, const std::vector<int>&> searchPathList;       //key:顺序ID
+        std::unordered_map<int, const struct Frame&> frameList;           //key:顺序ID
         std::mutex mutex_;
-        TreeNode* frameListRoot{};
-        TreeNode* searchPathListRoot{};
-        TreeNode* steelNumArrayListRoot{};
+        TreeNode* frameListRoot= new TreeNode(0);
+        TreeNode* searchPathListRoot= new TreeNode(0);
+        TreeNode* steelNumArrayListRoot= new TreeNode(0);
     };
 
 

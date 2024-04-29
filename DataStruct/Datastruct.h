@@ -46,23 +46,23 @@ namespace matching {
     struct Edge {
         int ID;
         EdgeType type;
-        int frameID;
-        int steelType;
+        //int frameID;
+        //int steelType;
         int steelNum;
-        vector<double> startPoint; // 起点的三维坐标
-        vector<double> endPoint;   // 终点的三维坐标
+        //vector<double> startPoint; // 起点的三维坐标
+        //vector<double> endPoint;   // 终点的三维坐标
     };
     // 定义板架类
     struct Frame {
         int ID; // 板架ID
-        int shipID; // 所属船只ID
+        //int shipID; // 所属船只ID
         int shipTypeID; // 船只类型
         int tonnage; // 船只吨位
-        FrameShape shape; // 板架形状
-        Plane plane; // 平面板的所属平面
-        int ribPosition; // 肋位
-        int ribDirection; // 肋向位置
-        int altitudeDirection; // 海拔方向位置
+        //FrameShape shape; // 板架形状
+        //Plane plane; // 平面板的所属平面
+        //int ribPosition; // 肋位
+        //int ribDirection; // 肋向位置
+        //int altitudeDirection; // 海拔方向位置
         int edgeNum; // 边的数量
         map<int, Edge> edges; // 存储所有 Edge 的 Map
     };

@@ -20,12 +20,13 @@ public:
     void addChild(TreeNode* child);
     void destroy();
     int getAbsoluteID() const;
+    int getRelativeId() const;
 
 private:
     static int counter;
     static std::map<int,TreeNode*> nodeMap;
-    int absoluteID;
-    int relativeID;
+    int absoluteID{};
+    int relativeID{};
     std::unordered_map<int, TreeNode*> children;
 };
 

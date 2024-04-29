@@ -3,10 +3,13 @@
 //
 #include "TreeNode.h"
 
+int TreeNode::counter = 0;
+std::map<int, TreeNode*> TreeNode::nodeMap;
+
 TreeNode::TreeNode(int v) : relativeID(v) {
-    counter++;
     absoluteID=counter;
     nodeMap.emplace(absoluteID,this);
+    counter++;
 }
 
 TreeNode::~TreeNode() {
@@ -62,4 +65,10 @@ TreeNode* TreeNode::search(TreeNode* root,const std::vector<int>& frameVector) {
 int TreeNode::getAbsoluteID() const {
     return absoluteID;
 }
+
+int TreeNode::getRelativeId() const {
+    return relativeID;
+}
+
+
 
